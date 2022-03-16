@@ -1,13 +1,12 @@
 from flask import Flask, render_template
 from datetime import datetime
 import locale
-#Prueba lint
 
 app = Flask(__name__)
 locale.setlocale(locale.LC_TIME, '')
 
-@app.route('/')
 
+@app.route('/')
 def index():
     # Load current count
     f = open("count.txt", "r")
@@ -23,8 +22,9 @@ def index():
     f.close()
 
     the_time = datetime.now().strftime("%A, %d %b %Y %H:%M")
-    return render_template("index.html", count=count, the_time=the_time, tema="dogs")
+    return render_template("index.html", count=count,
+                           the_time=the_time, tema="dogs")
 
 
 if __name__ == '__main__':
-    app.run() 
+    app.run()
